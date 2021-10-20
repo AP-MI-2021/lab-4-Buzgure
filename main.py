@@ -165,6 +165,21 @@ def replace_numbers(lst):
         else:
             int_part = int(numbers)
             fract_part = get_fract(numbers)
+            number_str = ''
+            list_num = []
+            int_number = int(numbers)
+            while (int_number):
+                list_num.append(str(int_number % 10))
+                int_number //= 10
+            list_num.append(separator[0])
+            while (fract_part):
+                list_num.append(str(fract_part % 10))
+                fract_part //= 10
+
+            for index in list_num:
+                number_str = replace_with[int(index)] + number_str
+            result.append(number_str)
+
     return result
 if __name__ == '__main__':
     test_show_int()
