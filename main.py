@@ -136,19 +136,31 @@ def test_int_div_fract():
     assert int_div_fract([1.5, 8, 9.8, 3.2]) == [1.5]
     assert int_div_fract([8, 9.8, 3.2]) == []
 
+"""
+def reverse_number(number):
+    rev = 0
+    while number:
+        rev = rev * 10 + number & 10
+        number = number // 10
+    return rev
+"""
+
 
 def replace_numbers(lst):
     replace_with = ['zero', 'unu', 'doi', 'trei', 'patru', 'cinci', 'sase', 'sapte', 'opt', 'noua', 'zece']
     separator = ['virgula']
     result = []
     for numbers in lst:
+        number_str = ''
+        list_num = []
         if numbers == int(numbers):
             int_number = int(numbers)
             while(int_number):
-                number_str = replace_with[int_number % 10]
+                list_num.append(str(int_number % 10))
                 int_number //= 10
-                result.append(number_str)
-            result.reverse()
+            for index in list_num:
+                number_str = replace_with[int(index)] + number_str
+            result.append(number_str)
 
         else:
             int_part = int(numbers)
