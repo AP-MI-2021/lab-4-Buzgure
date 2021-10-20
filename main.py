@@ -115,7 +115,6 @@ def test_get_fract():
     assert get_fract(14.0) == 0
     assert get_fract(14.897) == 897
     assert get_fract(14.512) == 512
-    assert get_fract(14.90) == 90
 
 
 def int_div_fract(lst):
@@ -130,6 +129,13 @@ def int_div_fract(lst):
         if int(numbers) != numbers and is_div(get_fract(numbers), int(numbers)):
             result.append(numbers)
     return result
+
+def test_int_div_fract():
+    assert int_div_fract([1.5, -3.3, 8, 9.8, 3.2]) == [1.5, -3.3]
+    assert int_div_fract([1.5, -3.3, 8, 9.8, 3.2, 4.8]) == [1.5, -3.3, 4.8]
+    assert int_div_fract([1.5, 8, 9.8, 3.2]) == [1.5]
+    assert int_div_fract([8, 9.8, 3.2]) == []
+
 
 def replace_numbers(lst):
     replace_with = ['zero', 'unu', 'doi', 'trei', 'patru', 'cinci', 'sase', 'sapte', 'opt', 'noua', 'zece']
